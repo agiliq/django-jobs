@@ -1,0 +1,26 @@
+{% extends 'jobs/base.html' %}
+
+{% block text %}
+<h2>
+    Enter Your details. Enter as much information as possible to get your self noticed.
+</h2>
+
+<br />
+    <div class="forms">
+       <form action="." method="post">
+        {% for field in form %}
+        <p>
+        {% if field.errors %} <span class="error">
+        {% for error in field.errors %}
+        {{ error }}
+        {% endfor %}
+        </span> {% endif %}            
+        {{ field.label_tag }}
+        {{field}}
+        {% if field.help_text %}<span class="help">{{ field.help_text }}</span>{% endif %}
+        </p>
+        {% endfor %}
+        <input type="submit" value="submit" name="submit" />
+       </form>
+    </div>      
+{% endblock %}

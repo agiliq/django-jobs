@@ -1,0 +1,33 @@
+{% extends 'jobs/base.html' %}
+
+{% block toptab %}
+<h3>
+    Enter Your details. Enter as much information as possible. Every one likes to know more, before they take a job!
+</h3>
+{% endblock %}
+
+{% block text %}
+<div class="post">
+
+<br />
+
+       <form action="." method="post">
+        <div class="form">            
+        {% for field in form %}
+        {% if field.errors %} <span class="error">
+        {% for error in field.errors %}
+        {{ error }}
+        {% endfor %}
+        </span> {% endif %}            
+        {{ field.label_tag }}
+        {{field}}
+        {% if field.help_text %}<span class="help">{{ field.help_text }}</span>{% endif %}
+        <div class="clear"></div>
+        {% endfor %}
+        <input type="submit" value="submit" name="submit" class="button" />
+        </div>        
+       </form>
+
+</div>
+       
+{% endblock %}

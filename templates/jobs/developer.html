@@ -1,0 +1,55 @@
+{% extends 'jobs/base.html' %}
+
+{% block toptab %}
+<h3>
+    Details for {{developer.name}}
+</h3>
+<p>
+    Added on {{developer.created_on|date:"jS F Y"}}
+</p>
+{% endblock %}
+
+{% block text %}
+
+<p>
+    
+    <table>
+        <tr>
+            <th>
+                Name:
+            </th>
+            <td>
+                {{developer.name}}
+            </td>
+        </tr>
+                <tr>
+            <th>
+               About:
+            </th>
+            <td class="descriptiontd">
+               {{developer.description|linebreaks|urlize}}
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Email:
+            </th>
+            <td>
+                {{developer.email}}
+            </td>
+        </tr>
+        <tr>
+            <th>
+                 Website:
+            </th>
+            <td>
+                <a rel="nofollow" href="{{developer.website}}">{{developer.website}}</a>
+            </td>
+        </tr>        
+    </table>      
+    <br />
+    {% if developer.is_editable %}
+      <a href="{{developer.get_edit_url}}">Edit this</a>
+    {% endif %}    
+</p>
+{% endblock %}

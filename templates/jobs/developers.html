@@ -1,0 +1,51 @@
+{% extends 'jobs/base.html' %}
+
+
+{% block toptab %}
+<h3>
+    {{developers}}
+</h3>
+{% endblock %}
+
+{% block text %}
+        {% for developer in developers_list %}
+        <div class="post">
+            
+            <div class="posttop">
+                <h4>{{developer.name}}</h4>
+            </div>
+            <div class="postitem">
+                
+            {{developer.description|linebreaks|urlize|truncatewords:30}}
+            <a href={{developer.get_absolute_url}}>Read more ...</a>
+            </div>
+            </div>
+        {% endfor %}
+{% endblock %}
+
+{% block sidebar %}
+<h2>Sort</h2>
+  <ul>
+    <li>
+      <a href="{% url jobs_developers %}?order=name">Sort by Name</a>    </li>
+    <li>
+      <a href="{% url jobs_developers %}?order=created_on">Sort by Date</a>    </li>
+    <li>
+  
+{% endblock %}
+
+  {% block pagination %}
+  {% if is_paginated %}
+  {% if has_previous %}
+  <span class="pre">&laquo;<a href=".?page={{previous}}">Previous Post</a></span>
+  {% else %}
+  <span class="pre">&nbsp;</span>
+  {% endif %}
+    {% if has_next %}
+  <span class="next"><a href=".?page={{next}}">Next Post</a>&raquo;</span>
+  {% endif %}
+  {% endif %}
+ 
+   
+ <div class="clear2"></div>
+  {% endblock %}

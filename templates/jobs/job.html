@@ -1,0 +1,110 @@
+{% extends 'jobs/base.html' %}
+
+
+{% block toptab %}
+<h3>
+    Details for {{developer.name}}
+</h3>
+{% endblock %}
+
+{% block text %}
+
+
+        <div class="post">
+            
+            <div class="posttop">
+                <h4>Details for {{job.name}}</h4>
+            </div>  
+            <div class="postitem">
+
+    <h5>Job details</h5>
+    <table>
+        <tr>
+            <th>
+                Job Name
+            </th>
+            <td>
+                {{job.name}}
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Job Description
+            </th>
+            <td>
+                {{job.description}}
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Job Location
+            </th>
+            <td>
+                {{job.location}}
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Budget
+            </th>
+            <td>
+        {% if budget %}
+        {{job.budget}}
+        {% else %}
+        None specified.
+        {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Required on site?
+            </th>
+            <td>
+                {{job.on_site|yesno:"yes,no,maybe"}}
+            </td>
+        </tr>         
+    </table>
+
+    <h5>Company Details</h5>
+    
+    <table>
+        <tr>
+            <th>
+                Company Name
+            </th>
+            <td>
+                {{job.poster_name}}
+            </td>
+        </tr>
+                <tr>
+            <th>
+                Company email
+            </th>
+            <td>
+                {{job.email}}
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Company website
+            </th>
+            <td>
+                <a rel="nofollow" href="{{job.website}}">{{job.website}}</a>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                About the company
+            </th>
+            <td>
+                {{job.other_info|linebreaks|urlize}}
+            </td>
+        </tr>        
+    </table>    
+    <br />
+    {% if job.is_editable %}
+      <a href="{{job.get_edit_url}}">Edit this</a>
+    {% endif %}
+</div>
+</div>
+{% endblock %}

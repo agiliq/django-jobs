@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+{% block title %}
+  Guitar jobs
+{% endblock %}
+  
+
+</title>
+<link href="{{ MEDIA_URL }}jobs/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div id="wrap">
+<div id="header">
+{% block supertop %}  
+<ul id="topmenu">
+<li><a href="{% url jobs_index %}">Home</a> </li>
+</ul>
+{% endblock %}
+<div class="clear"></div>
+{% block headertext %}
+  <h1 id="sitename"><a href="#">DJobBoards</a> <span class="description">A django job site</span></h1>
+{% endblock %}
+</div>
+<div id="content">
+<div id="sidebar">
+<div class="sidebartop">
+
+</div>
+<div id="sidebarcontent">
+
+
+{% block sidebar %}
+{% endblock %}
+
+  </div>
+</div>
+
+<div id="left">
+<div id="tab">
+<div id="tabhead">
+{% block topbar %}
+  
+{% endblock %}  
+  <ul>
+    <a href="{% url jobs_add_developer %}">Add developer</a></li>
+    <li><a href="{% url jobs_add_job %}">Add Job</a></li>
+    <li><a href="{% url jobs_developers %}">See Devlopers</a></li>
+    <li><a href="{% url jobs_jobs %}">See Job</a></li>
+	<li><a href="{% url jobs_about %}">About</a></li>
+  </ul>
+</div>
+
+<div id="tabcontent">
+{% block toptab %}
+
+<img class="leftimg" src="images/guitar.jpg" alt="Guitar" />
+<h3>Lorem Ipsum Dolor Sit Amet <span class="postinfo">Posted by Admin on 24 January 2008</span></h3>
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nunc viverra adipiscing dui. Sed porta rhoncus sem. Aliquam erat volutpat. Praesent suscipit, lectus vitae aliquam volutpat, quam neque tincidunt leo, a condimentum libero lectus sit amet enim. Quisque tristique. <a href="#">Read More</a></p>
+{% endblock %}
+</div>  
+</div>
+{% block text %}
+<div class="post">
+<div class="posttop"></div>
+<div class="postitem">
+<h2><a href="#">Lorem Ipsum Dolor Sit Amet</a><span class="postinfo">Posted by Admin on 24 January 2008</span> </h2>
+ <img class="leftimg" src="images/img.jpg" alt="Image" />   <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nunc viverra  adipiscing dui. Sed porta rhoncus sem. Aliquam erat volutpat. Praesent  suscipit, lectus vitae aliquam volutpat, quam neque tincidunt leo, a  condimentum libero lectus sit amet enim. Quisque tristique. Sed  facilisis, eros eget sagittis congue, sapien quam elementum sapien, ut  hendrerit ante lacus in felis. Curabitur ac eros. Mauris sapien.  </p>
+  <blockquote class="rightquote">
+  <p>Monochrome is a Free CSS Template released under <a href="http://creativecommons.org/licenses/by/2.5/">Creative Commons License</a> by Rambling Soul. You can download more templates from my <a href="http://www.opendesigns.org/profile/?user=ramblingsoul">profile</a> or from my <a href="http://ramblingsoul.com">website</a>.<cite>BlockQuote</cite> </p>
+  </blockquote>
+  <p>Vestibulum odio nisl, accumsan vitae, varius vitae, faucibus a, dui.  Vestibulum tortor. Suspendisse potenti. Phasellus est. Maecenas aliquet  nunc ac est. In porta posuere sem. Morbi sagittis ipsum ut nunc.  Suspendisse euismod. Ut quis nunc. Quisque massa. Morbi faucibus nisi  ut sem. Mauris venenatis, justo ac faucibus convallis, mi arcu  scelerisque lacus, non molestie velit lectus ut pede. Sed venenatis.  Nullam sed quam. Morbi quis eros. Pellentesque elit. Nam at est. Etiam  vitae ligula sed justo fringilla posuere. Maecenas lorem dolor,  vulputate ac, vehicula mollis, facilisis ut, odio. In vitae nisi nec  massa imperdiet mattis. <a href="#">Read More</a></p>
+</div>
+  <div class="postbottom"><a href="#">Category</a> | <a href="#">No Comments</a> | <a href="#">Share This</a> </div>
+  </div>
+{% endblock %}
+  <div id="pagination">
+
+{% block pagination %}
+{% endblock %}
+ </div>
+  </div>
+
+<div class="clear"></div>
+
+<div id="footer">
+{% block footer %}
+<a href="http://www.7days7apps.com/">7days7apps.com</a> | <a href="{% url jobs_about %}">About</a> | <a href="http://day5.7days7apps.com/">Previous - Answrs</a> </p>
+<p id="credit"><a href="#">CSS Template</a> by RamblingSoul</p>  
+{% endblock %}
+
+
+
+</div>
+</div>
+</div>
+</body>
+</html>
