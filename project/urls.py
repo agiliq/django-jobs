@@ -15,7 +15,7 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     # (r'^admin/', include(admin.site.urls)),
-    (r'^jobs/', include('jobs.urls')),
+    (r'^', include('jobs.urls')),
 )
 
 if settings.DEBUG:
