@@ -12,6 +12,7 @@
 <br />
 
        <form action="." method="post">
+        {% csrf_token %}
         <div class="form">            
         {% for field in form %}
         {% if field.errors %} <span class="error">
