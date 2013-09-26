@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.urlresolvers import reverse
 
 class Developer(models.Model):
     name = models.CharField(max_length = 100)
@@ -11,13 +12,11 @@ class Developer(models.Model):
     is_editable = models.BooleanField(default = False)
     password = models.CharField(max_length = 100, null = True)
     
-    @models.permalink
     def get_absolute_url(self):
-        return ('jobs.views.developer', [self.id])
+        return reverse('jobs_developer', args=[self.id])
     
-    @models.permalink
     def get_edit_url(self):
-        return ('jobs.views.edit_developer', [self.id])
+        return reverse('jobs_edit_developer', args=[self.id])
         
     class Admin:
         pass
@@ -41,13 +40,11 @@ class Job(models.Model):
     is_editable = models.BooleanField(default = False)
     password = models.CharField(max_length = 100, null = True)
     
-    @models.permalink
     def get_absolute_url(self):
-        return ('jobs.views.job', [self.id])
+        return reverse('jobs_job', args=[self.id])
     
-    @models.permalink
     def get_edit_url(self):
-        return ('jobs.views.edit_job', [self.id])
+        return reverse('jobs_edit_job', args=[self.id])
 
     class Admin:
         pass

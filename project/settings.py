@@ -1,8 +1,9 @@
 # Django settings for project project.
-
+import os
+from unipath import Path
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
-
+SITE_PATH = Path(__file__).ancestor(1)
 ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
 )
@@ -43,19 +44,18 @@ USE_I18N = True
 # calendars according to the current locale
 USE_L10N = True
 
-# Absolute path to the directory that holds media.
-# Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = '/home/tuxcanfly/Work/django-jobs/project/media/'
+ADMIN_MEDIA_PREFIX = '/media/'
+
+MEDIA_ROOT = SITE_PATH.child('media')
+print MEDIA_ROOT
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
-# trailing slash if there is a path component (optional in other cases).
-# Examples: "http://media.lawrence.com", "http://example.com/media/"
+# trailing slash.
+# Examples: "http://example.com/media/", "http://media.example.com/"
 MEDIA_URL = '/site_media/'
-
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = '/media/'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '%ryxugba7+s*2nh=q93gvu7ecjr3d@w(6ez26q#84&a4md0qo3'
@@ -92,4 +92,21 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     'jobs',
+)
+
+# Absolute path to the directory static files should be collected to.
+# Don't put anything in this directory yourself; store your static files
+# in apps' "static/" subdirectories and in STATICFILES_DIRS.
+# Example: "/var/www/example.com/static/"
+STATIC_ROOT = ''
+
+# URL prefix for static files.
+# Example: "http://example.com/static/", "http://static.example.com/"
+STATIC_URL = '/static/'
+
+# Additional locations of static files
+STATICFILES_DIRS = (
+    # Put strings here, like "/home/html/static" or "C:/www/django/static".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
 )
