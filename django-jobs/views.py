@@ -1,5 +1,5 @@
 from django.http import HttpResponse, HttpResponseRedirect, Http404, HttpResponseForbidden
-from django.views.generic.list_detail import object_list, object_detail
+from django.views.generic import ListView, DetailView
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.core.urlresolvers import reverse
@@ -27,36 +27,53 @@ def add_developer(request):
 def add_job(request):
     return handle_form(request, JobForm, 'jobs/addjob.html')
 
-def developer(request, id):
-    qs = models.Developer.objects.all()
-    return object_detail(request, template_name = 'jobs/developer.html', queryset = qs, object_id = id, template_object_name = 'developer')
-    
 
-def job(request, id):
-    qs = models.Job.objects.all()
-    return object_detail(request, template_name = 'jobs/job.html', queryset = qs, object_id = id, template_object_name = 'job')
+class Developer(DetailView):
+    model = models.Developer
+    template_name = 'jobs/developer.html'
+    context_object_name = 'developer'
 
-def developers(request):
-    try:
-        order_by = request.GET['order']
-    except:
-        order_by = 'created_on'
-    if order_by == 'created_on': order_by = '-created_on'
-    if not order_by in ('name', 'created_on'):
-        order_by = '-created_on'        
-    qs = models.Developer.objects.all().order_by(order_by)
-    return object_list(request, template_name = 'jobs/developers.html', queryset = qs, template_object_name = 'developers', paginate_by=10)
 
-def jobs(request):
-    try:
-        order_by = request.GET['order']
-    except:
-        order_by = 'created_on'
-    if order_by == 'created_on': order_by = '-created_on'
-    if not order_by in ('name', 'created_on'):
-        order_by = '-created_on'
-    qs = models.Job.objects.all().order_by(order_by)
-    return object_list(request, template_name = 'jobs/jobs.html', queryset = qs, template_object_name = 'jobs', paginate_by=10)
+
+
+class Job(DetailView):
+    model = models.Job
+    template_name = 'jobs/job.html'
+    context_object_name = 'job'
+
+
+class Developers(ListView):
+    template_name = 'jobs/developers.html'
+    context_object_name = 'developers'
+    paginate_by=10
+
+    def get_queryset(self):
+        try:
+            order_by = self.kwargs['order']
+        except:
+            order_by = 'created_on'
+        if order_by == 'created_on': order_by = '-created_on'
+        if not order_by in ('name', 'created_on'):
+            order_by = '-created_on'        
+        qs = models.Developer.objects.all().order_by(order_by)
+        return qs
+
+
+class Jobs(ListView):
+    template_name = 'jobs/jobs.html'
+    context_object_name = 'jobs'
+    paginate_by=10
+
+    def get_queryset(self):
+        try:
+            order_by = self.kwargs['order']
+        except:
+            order_by = 'created_on'
+        if order_by == 'created_on': order_by = '-created_on'
+        if not order_by in ('name', 'created_on'):
+            order_by = '-created_on'        
+        qs = models.Job.objects.all().order_by(order_by)
+        return qs
 
 def edit_job(request, id):
     try:
