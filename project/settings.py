@@ -47,7 +47,6 @@ USE_L10N = True
 ADMIN_MEDIA_PREFIX = '/media/'
 
 MEDIA_ROOT = SITE_PATH.child('media')
-print MEDIA_ROOT
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
