@@ -11,7 +11,7 @@ install:
 # command to run tests
 script: 
   -  python project/manage.py test jobs
-#   -  coverage run --source="." project/manage.py test jobs
+  -  coverage run --source="." project/manage.py test jobs
 
-# after_success:
-#   - coveralls  
+after_success:
+  - coveralls  
