@@ -17,7 +17,7 @@
 <div id="header">
 {% block supertop %}  
 <ul id="topmenu">
-<li><a href="{% url jobs_index %}">Home</a> </li>
+<li><a href="{% url 'jobs_index' %}">Home</a> </li>
 </ul>
 {% endblock %}
 <div class="clear"></div>
@@ -46,11 +46,11 @@
   
 {% endblock %}  
   <ul>
-    <a href="{% url jobs_add_developer %}">Add developer</a></li>
-    <li><a href="{% url jobs_add_job %}">Add Job</a></li>
-    <li><a href="{% url jobs_developers %}">See Devlopers</a></li>
-    <li><a href="{% url jobs_jobs %}">See Job</a></li>
-	<li><a href="{% url jobs_about %}">About</a></li>
+    <a href="{% url 'jobs_add_developer' %}">Add developer</a></li>
+    <li><a href="{% url 'jobs_add_job' %}">Add Job</a></li>
+    <li><a href="{% url 'jobs_developers' %}">See Devlopers</a></li>
+    <li><a href="{% url 'jobs_jobs' %}">See Job</a></li>
+	<li><a href="{% url 'jobs_about' %}">About</a></li>
   </ul>
 </div>
 
@@ -88,7 +88,7 @@
 
 <div id="footer">
 {% block footer %}
-<a href="http://www.7days7apps.com/">7days7apps.com</a> | <a href="{% url jobs_about %}">About</a> | <a href="http://day5.7days7apps.com/">Previous - Answrs</a> </p>
+<a href="http://www.7days7apps.com/">7days7apps.com</a> | <a href="{% url 'jobs_about' %}">About</a> | <a href="http://day5.7days7apps.com/">Previous - Answrs</a> </p>
 <p id="credit"><a href="#">CSS Template</a> by RamblingSoul</p>  
 {% endblock %}
 
