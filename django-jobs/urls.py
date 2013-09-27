@@ -23,7 +23,7 @@ urlpatterns = patterns('jobs.views',
     url(r'^about/$', TemplateView.as_view(template_name='jobs/about.html'), name='jobs_about'),
 
     # Uncomment this for admin:
-    # url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', include(admin.site.urls)),
 )
 
 
