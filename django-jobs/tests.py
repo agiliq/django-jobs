@@ -20,10 +20,24 @@ class JobsAppTestcase(TestCase):
     	response = self.c.get(reverse("jobs_index"))
     	self.assertEqual(200, response.status_code)    
 
-    def test_CreateView(self):
-    	response = self.c.get(reverse("jobs_add_developer"))
+    def test_adddevview(self):
+        response = self.c.get(reverse("jobs_add_developer"))
+        self.assertEqual(200, response.status_code)
+
+    def test_addjobview(self):
+    	response = self.c.get(reverse("jobs_add_job"))
     	self.assertEqual(200, response.status_code)
 
-    def test_AboutView(self):
-    	response = self.c.get(reverse("jobs_developers"))
+    def test_developersview(self):
+        response = self.c.get(reverse("jobs_developers"))
+        self.assertEqual(200, response.status_code)
+
+    def test_jobsview(self):
+        response = self.c.get(reverse("jobs_jobs"))
+        self.assertEqual(200, response.status_code)    
+
+    def test_aboutview(self):
+    	response = self.c.get(reverse("jobs_about"))
     	self.assertEqual(200, response.status_code)
+
+        
